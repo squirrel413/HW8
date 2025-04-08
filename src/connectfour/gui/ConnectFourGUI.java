@@ -11,10 +11,15 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.control.*;
-
 import java.util.ArrayList;
 
-
+/**
+ * The graphical user interface for ConnectFourBoard. This class encapsulates the view and the
+ * controller portions of the MVC architecture by giving buttons functionality and updating the
+ * view of the board and its statistics every move.
+ * @author Nick Tibbels nst2038@rit.edu
+ * @author Samuel Whitney shw9601@rit.edu
+ * */
 public class ConnectFourGUI extends Application implements Observer<ConnectFourBoard> {
 
     private ConnectFourBoard board;
@@ -30,8 +35,17 @@ public class ConnectFourGUI extends Application implements Observer<ConnectFourB
         initializeView();
     }
 
+    /**
+     * Method for adding an observer for the board in the graphical interface. Is called
+     * when initializing the constructor for the GUI.
+     * */
     private void initializeView(){this.board.addObserver(this);}
 
+
+    /**
+     * Helper method for creating the GridPane that stores all the buttons for running
+     * the ConnectFourBoard Model.
+     * */
     public GridPane makeGridPane() {
         GridPane grid = new GridPane();
         for (int row = 0; row<ConnectFourBoard.ROWS; row++) {
@@ -51,6 +65,11 @@ public class ConnectFourGUI extends Application implements Observer<ConnectFourB
         return grid;
     }
 
+    /**
+     * The method called on by Application.launch(args) from main. Makes a BorderPane that
+     * stores the GridPane for the board in the center and displays a string of information
+     * about the game's statistics at the bottom.
+     * */
     public void start(Stage stage){
         BorderPane pane = new BorderPane();
         this.grid = makeGridPane();
@@ -69,6 +88,9 @@ public class ConnectFourGUI extends Application implements Observer<ConnectFourB
         stage.show();
     }
 
+    /**
+     * The overridden update method that informs observers that something has changed and updates
+     * the state of the board. This is called everytime a button is action event-ed.*/
     @Override
     public void update(ConnectFourBoard board) {
         for (int row = 0; row<ConnectFourBoard.ROWS; row++) {

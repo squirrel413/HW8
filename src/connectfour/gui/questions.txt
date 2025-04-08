@@ -4,8 +4,21 @@ Answer each of the following questions regarding the design of this application.
 
 1. In terms of MVC, which part does ConnectFourBoard represent?
 
+The class ConnectFourBoard represents the model portion of the MVC architecture. This is the object
+that we are manipulating through our PTUI and our GUI, whichever is loaded/ran.
+
 2. In terms of MVC, which *parts* do ConnectFourGUI and ConnectFourPTUI represent?
+
+The ConnectFourGUI and the ConnectFourPTUI represent the viewer and the controller for the MVC
+architecture. These classes display a view of the board (the view portion) and allow for manipulation
+of the game state through commands or buttons (the controller portion).
 
 3. What interface/method must ConnectFourGUI implement?
 
+ConnectFourGUI must implement the Observer<> interface and the singular method update(). This allows
+the observers to ask the model what has happened/changed.
+
 4. What method in ConnectFourBoard is used to call into ConnectFourGUI when the board changes?
+
+The notifyObservers() method is used to call into the ConnectFourGUI when the board changes, and
+has the GUI execute its update() method.
