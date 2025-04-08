@@ -30,10 +30,6 @@ public class ConnectFourGUI extends Application implements Observer<ConnectFourB
         initializeView();
     }
 
-    /*
-    ************************************ VIEW ******************************************
-     */
-
     private void initializeView(){this.board.addObserver(this);}
 
     public GridPane makeGridPane() {
@@ -92,10 +88,6 @@ public class ConnectFourGUI extends Application implements Observer<ConnectFourB
                 "\nMoves Made: " + this.board.getMovesMade() +
                 "\nStatus: " + this.board.getGameStatus());
     }
-
-    /*
-    ************************************ Control ********************************************
-     */
 
     public static void main(String[] args) {
         Application.launch(args);
